@@ -2,7 +2,7 @@
   app.HeroList = ng.core
     .Component({
       selector: 'my-heroes',
-      template: '{{asd}}{{heroes}}<ul><li *ngFor="#hero of heroes">{{hero}}</li></ul>',
+      template: '<ul><li *ngFor="#hero of heroes">{{hero}}</li></ul>',
       directive: [ng.common.NgFor]
     })
     .Class({
