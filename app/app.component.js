@@ -1,10 +1,27 @@
 (function(app) {
-  app.AppComponent =
-    ng.core.Component({
-      selector: 'my-app',
-      template: '<h1>My First Angular 2 App</h1>'
+  app.HeroList = ng.core
+    .Component({
+      selector: 'my-heroes',
+      template: '{{asd}}{{heroes}}<ul><li *ngFor="#hero of heroes">{{hero}}</li></ul>',
+      directive: [ng.common.NgFor]
     })
     .Class({
-      constructor: function() {}
+      constructor: function() {
+        this.asd = 'asd';
+        this.heroes = ['Batman', 'Superman'];
+      }
+    });
+  app.AppComponent =
+    ng.core
+    .Component({
+      selector: 'my-app',
+      template: '<h1>{{title}}</h1><h2>{{hero}} details!</h2><my-heroes></my-heroes>',
+      directive: [app.HeroList]
+    })
+    .Class({
+      constructor: function() {
+        this.title = 'Tour of Heroes';
+        this.hero = 'Windstorm';
+      }
     });
 })(window.app || (window.app = {}));
