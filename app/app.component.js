@@ -1,14 +1,41 @@
 (function(app) {
+  'use strict';
+  class Heroo {
+    constructor(nickName, realName) {
+      this.nickName = nickName;
+      this.realName = realName;
+    }
+    toString() {
+      return (this.realName + ' is ' + this.nickName);
+    }
+  }
+  app.Hero = ng.core
+    .Component({
+      selector: 'my-hero',
+      template: `<b>{{hero.realName}} is {{hero.nickName}}</b>`,
+      inputs: ['hero']
+    })
+    .Class({
+      constructor: function() {},
+      ngOnInit: function() {
+        // console.log(this.hero)
+      }
+    });
   app.HeroList = ng.core
     .Component({
       selector: 'my-heroes',
-      template: '<ul><li *ngFor="#hero of heroes">{{hero}}</li></ul>',
-      directive: [ng.common.NgFor]
+      template: `<ul><li *ngFor="#h of heroes"><my-hero [hero]="h"></my-hero></li></ul>`,
+      directives: [
+        ng.common.NgFor,
+        app.Hero
+      ]
     })
     .Class({
       constructor: function() {
-        this.asd = 'asd';
-        this.heroes = ['Batman', 'Superman'];
+        this.heroes = [
+          new Heroo('Batman', 'Bruce Wayne'),
+          new Heroo('Superman', 'Clark Kent')
+        ];
       }
     });
   app.AppComponent =
@@ -16,7 +43,7 @@
     .Component({
       selector: 'my-app',
       template: '<h1>{{title}}</h1><h2>{{hero}} details!</h2><my-heroes></my-heroes>',
-      directive: [app.HeroList]
+      directives: [app.HeroList]
     })
     .Class({
       constructor: function() {
