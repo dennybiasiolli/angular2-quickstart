@@ -42,13 +42,19 @@
     ng.core
     .Component({
       selector: 'my-app',
-      template: '<h1>{{title}}</h1><h2>{{hero}} details!</h2><my-heroes></my-heroes>',
-      directives: [app.HeroList]
+      template: `<h1>{{title}}</h1><h2>{{hero}} details!</h2><my-heroes></my-heroes>
+      <ng2-pdf url="pdf/relativity.pdf"></ng2-pdf>`,
+      directives: [
+        app.HeroList,
+        app.ng2Pdf
+      ],
+      inputs: ['test']
     })
     .Class({
       constructor: function() {
         this.title = 'Tour of Heroes';
         this.hero = 'Windstorm';
-      }
+      },
+      ngOnInit: function() {}
     });
 })(window.app || (window.app = {}));

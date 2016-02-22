@@ -12,6 +12,7 @@
     "angular2": "^2.0.0-beta.7",
     "es6-promise": "^3.1.2",
     "es6-shim": "^0.33.13",
+    "pdfjs-dist": "^1.4.83",
     "reflect-metadata": "^0.1.2",
     "rxjs": "^5.0.0-beta.2",
     "zone.js": "^0.5.15"
