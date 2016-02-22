@@ -43,7 +43,11 @@
     .Component({
       selector: 'my-app',
       template: `<h1>{{title}}</h1><h2>{{hero}} details!</h2><my-heroes></my-heroes>
-      <ng2-pdf url="pdf/relativity.pdf"></ng2-pdf>`,
+      <p>
+        <label>PDF url</label> <input type="text" [(ngModel)]="pdfUrl" />
+        <label>PDF page</label> <input type="text" [(ngModel)]="page" />
+      </p>
+      <ng2-pdf [url]="pdfUrl" [page]="page"></ng2-pdf>`,
       directives: [
         app.HeroList,
         app.ng2Pdf
@@ -54,6 +58,8 @@
       constructor: function() {
         this.title = 'Tour of Heroes';
         this.hero = 'Windstorm';
+        this.pdfUrl = 'pdf/relativity.pdf';
+        this.page = 16;
       },
       ngOnInit: function() {}
     });
